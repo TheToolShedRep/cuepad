@@ -1,6 +1,6 @@
 {
   "name": "Open Drum Pad",
-  "short_name": "DrumPad",
+  "short_name": "Cue Pad",
   "description": "A mobile-friendly drum pad / soundboard. Sounds are stored locally on your device.",
   "start_url": "./",
   "scope": "./",
