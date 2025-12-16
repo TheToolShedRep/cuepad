@@ -44,3 +44,4 @@ No drivers. No accounts. No monthly fees.
 ## 🚀 Live Demo
 
 Once hosted on GitHub Pages:
+iPhone: If your phone is on silent, you will not be able to hear the sounds.
