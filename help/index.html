@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0b0f" />
+    <title>CuePad Help</title>
+
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 16px;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        background: #0b0b0f;
+        color: #eaeaf2;
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        display: grid;
+        gap: 12px;
+      }
+      .card {
+        background: #12121a;
+        border: 1px solid #222232;
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 20px;
+      }
+      h2 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+      p,
+      li {
+        color: #d9d9ef;
+        line-height: 1.45;
+      }
+      .muted {
+        color: #a8a8c2;
+        font-size: 12px;
+      }
+      .btn {
+        display: inline-block;
+        background: #181826;
+        border: 1px solid #2b2b45;
+        color: #eaeaf2;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+      }
+      .btn:hover {
+        border-color: #5a5a86;
+      }
+      code,
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        color: #a8a8c2;
+      }
+      ul {
+        margin: 8px 0 0 18px;
+      }
+      .grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .callout {
+        border: 1px solid #2c4a7a;
+        background: #131a2a;
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .danger {
+        border: 1px solid #4a2530;
+        background: #1a1015;
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .link {
+        color: #9fd3ff;
+        text-decoration: none;
+      }
+      .link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="card top">
+        <div>
+          <h1>CuePad Help</h1>
+          <div class="muted">
+            Quick start + troubleshooting (mobile & desktop).
+          </div>
+        </div>
+        <a class="btn" href="../">Open CuePad</a>
+      </div>
+
+      <div class="card">
+        <h2>Quick Start (30 seconds)</h2>
+        <ol>
+          <li>Open CuePad: <a class="link" href="../">Launch CuePad</a></li>
+          <li>Tap <strong>“Tap to Arm Audio”</strong></li>
+          <li>Tap <strong>Import Sounds</strong> and choose audio files</li>
+          <li>Drag a sound from <strong>Library</strong> onto a pad</li>
+          <li>Tap pads to play</li>
+        </ol>
+        <p class="muted">
+          Hotkeys on desktop: <code>1–9, 0, Q, W, E, R, T, Y</code>
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Adding Sounds</h2>
+          <ul>
+            <li><strong>Mobile:</strong> use <strong>Import Sounds</strong></li>
+            <li>
+              <strong>Desktop:</strong> you can also drag audio files into the
+              Library drop zone
+            </li>
+            <li>Supported: WAV, MP3, OGG, M4A/AAC (varies by device)</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <h2>iPhone Tips</h2>
+          <ul>
+            <li>
+              <strong>No sound?</strong> Make sure your iPhone is
+              <strong>not on Silent Mode</strong>.
+            </li>
+            <li>
+              Always tap <strong>“Tap to Arm Audio”</strong> once before
+              playing.
+            </li>
+            <li>
+              If files are greyed out, pick files stored
+              <strong>On My iPhone</strong> (not cloud-only).
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Streaming / OBS</h2>
+        <ul>
+          <li>
+            <strong>Easiest:</strong> play CuePad on your computer and capture
+            desktop audio.
+          </li>
+          <li>
+            <strong>Phone as soundboard:</strong> you may need an audio route
+            (Bluetooth, cable, interface) depending on your setup.
+          </li>
+          <li>
+            CuePad is designed to be fast and simple; your capture method
+            determines “stream routing.”
+          </li>
+        </ul>
+      </div>
+
+      <div class="danger">
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li>
+            <strong>Nothing plays:</strong> tap <strong>Arm Audio</strong> and
+            turn volume up.
+          </li>
+          <li><strong>iPhone silent:</strong> flip the silent switch OFF.</li>
+          <li>
+            <strong>Import works but pads empty:</strong> drag a Library sound
+            onto a pad.
+          </li>
+          <li>
+            <strong>Old version showing:</strong> refresh / reopen (PWAs can
+            cache).
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="muted">
+          Want the source code or to contribute? Visit the GitHub repo
+          (optional).
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
