@@ -16,6 +16,12 @@
 
     <title>CuePad</title>
 
+    <div style="margin-top: 8px">
+      <a href="./help/" style="color: #9fd3ff; text-decoration: none"
+        >How to use CuePad →</a
+      >
+    </div>
+
     <style>
       :root {
         color-scheme: dark;
@@ -316,6 +322,118 @@
       </div>
     </div>
 
+    <!-- First-run overlay -->
+    <div
+      id="firstRun"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+        padding: 16px;
+      "
+    >
+      <div
+        style="
+          max-width: 720px;
+          margin: 40px auto;
+          background: #12121a;
+          border: 1px solid #222232;
+          border-radius: 14px;
+          padding: 14px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+          "
+        >
+          <div>
+            <div style="font-weight: 800; font-size: 16px">
+              Welcome to CuePad
+            </div>
+            <div style="color: #a8a8c2; font-size: 12px">
+              Takes ~10 seconds to get set up.
+            </div>
+          </div>
+          <button class="btn primary" id="firstRunClose">Let’s go</button>
+        </div>
+
+        <div style="margin-top: 10px; display: grid; gap: 10px">
+          <div
+            style="
+              background: #131a2a;
+              border: 1px solid #2c4a7a;
+              border-radius: 14px;
+              padding: 10px;
+            "
+          >
+            <div style="font-weight: 700">Step 1</div>
+            <div style="color: #d9d9ef">
+              Tap <strong>“Tap to Arm Audio”</strong> (required on mobile).
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #10101a;
+              border: 1px solid #222232;
+              border-radius: 14px;
+              padding: 10px;
+            "
+          >
+            <div style="font-weight: 700">Step 2</div>
+            <div style="color: #d9d9ef">
+              Tap <strong>Import Sounds</strong> to load audio from your device.
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #10101a;
+              border: 1px solid #222232;
+              border-radius: 14px;
+              padding: 10px;
+            "
+          >
+            <div style="font-weight: 700">Step 3</div>
+            <div style="color: #d9d9ef">
+              Drag a sound from <strong>Library</strong> onto a pad. Tap pads to
+              play.
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #1a1015;
+              border: 1px solid #4a2530;
+              border-radius: 14px;
+              padding: 10px;
+            "
+          >
+            <div style="font-weight: 700">iPhone tip</div>
+            <div style="color: #d9d9ef">
+              If you don’t hear audio, make sure
+              <strong>Silent Mode is OFF</strong>.
+            </div>
+          </div>
+
+          <div style="color: #a8a8c2; font-size: 12px">
+            Need more help?
+            <a href="./help/" style="color: #9fd3ff; text-decoration: none"
+              >Open instructions</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       /**
        * CuePad — single-file app
@@ -324,6 +442,26 @@
        * - ✅ Added Import Sounds button for mobile
        * - ✅ Added direct file drop onto pads (auto-import + assign)
        */
+
+      // First-run overlay (shows once per device/browser)
+      const firstRunEl = document.getElementById("firstRun");
+      const firstRunClose = document.getElementById("firstRunClose");
+
+      (function showFirstRunOnce() {
+        try {
+          const seen = localStorage.getItem("cuepad_seen_first_run");
+          if (!seen) {
+            firstRunEl.style.display = "block";
+          }
+        } catch {}
+      })();
+
+      firstRunClose?.addEventListener("click", () => {
+        try {
+          localStorage.setItem("cuepad_seen_first_run", "1");
+        } catch {}
+        firstRunEl.style.display = "none";
+      });
 
       const PAD_COUNT = 16;
       const HOTKEYS = [
@@ -861,15 +999,15 @@
       })();
 
       // Register Service Worker (PWA offline app shell)
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", async () => {
-          try {
-            await navigator.serviceWorker.register("./sw.js", { scope: "./" });
-          } catch (e) {
-            console.warn("SW registration failed:", e);
-          }
-        });
-      }
+      //if ("serviceWorker" in navigator) {
+      // window.addEventListener("load", async () => {
+      //try {
+      //await navigator.serviceWorker.register("./sw.js", { scope: "./" });
+      // } catch (e) {
+      // console.warn("SW registration failed:", e);
+      // }
+      // });
+      // }
     </script>
   </body>
 </html>
